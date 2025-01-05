@@ -10,7 +10,8 @@
     "lint": "eslint . --ext .ts",
     "lint-fix": "eslint . --ext .ts --fix",
     "typeorm": "ts-node ./node_modules/typeorm/cli.js",
-    "start": "node build/shared/http/server.js"
+    "start": "node build/shared/http/server.js",
+    "build": "tsc"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
