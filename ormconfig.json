@@ -7,8 +7,8 @@
   "database": "nev",
   "synchronize": false,
   "logging": false,
-  "entities": ["./src/modules/**/typeorm/entities/*{.ts,.js}"],
-  "migrations": ["./src/shared/typeorm/migrations/*{.ts,.js}"],
+  "entities": ["./build/modules/**/typeorm/entities/*{.ts,.js}"],
+  "migrations": ["./build/shared/typeorm/migrations/*{.ts,.js}"],
   "cli": {
     "migrationsDir": "./src/shared/typeorm/migrations"
   }
