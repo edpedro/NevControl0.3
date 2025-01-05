@@ -10,8 +10,7 @@
     "lint": "eslint . --ext .ts",
     "lint-fix": "eslint . --ext .ts --fix",
     "typeorm": "ts-node ./node_modules/typeorm/cli.js",
-    "start": "ts-node src/index.ts",
-    "build": "tsc"
+    "start": "ts-node src/index.ts"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
@@ -44,7 +43,7 @@
     "mysql": "^2.14.1",
     "pg": "^8.7.1",
     "reflect-metadata": "^0.1.14",
-    "typeorm": "0.3.16",
+    "typeorm": "^0.2.41",
     "uuid": "^11.0.4"
   }
 }
