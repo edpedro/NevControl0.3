@@ -13,9 +13,9 @@
     "strictPropertyInitialization": false,
     "baseUrl": "./",
     "paths": {
-      "@modules/*": ["build/modules/*"],
-      "@config/*": ["build/config/*"],
-      "@shared/*": ["build/shared/*"]
+      "@modules/*": ["src/modules/*"],
+      "@config/*": ["src/config/*"],
+      "@shared/*": ["src/shared/*"]
     }
   },
   "include": ["src"],

@@ -10,6 +10,6 @@
   "entities": ["./build/modules/**/typeorm/entities/*{.ts,.js}"],
   "migrations": ["./build/shared/typeorm/migrations/*{.ts,.js}"],
   "cli": {
-    "migrationsDir": "./build/shared/typeorm/migrations"
+    "migrationsDir": "./src/shared/typeorm/migrations"
   }
 }
