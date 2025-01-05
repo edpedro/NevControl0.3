@@ -15,7 +15,7 @@ class ShowCreditCardService {
     const creditCardsRepository = getCustomRepository(CreditCardsRepository);
     const transactionsRepository = getCustomRepository(TransactionsRepository);
 
-    const creditCard = await creditCardsRepository.findOne(id);
+    const creditCard = await creditCardsRepository.findOne({ where: { id } });
 
     if (!creditCard) {
       throw new AppError('CreditCard not found.');

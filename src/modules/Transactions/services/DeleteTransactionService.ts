@@ -10,7 +10,7 @@ class DeleteTransactionService {
   public async execute({ id }: IRequest): Promise<void> {
     const transactionsRepository = getCustomRepository(TransactionsRepository);
 
-    const transaction = await transactionsRepository.findOne(id);
+    const transaction = await transactionsRepository.findOne({ where: { id } });
 
     if (!transaction) {
       throw new AppError('Transaction not found.');
