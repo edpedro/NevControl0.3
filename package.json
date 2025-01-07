@@ -11,7 +11,7 @@
     "lint-fix": "eslint . --ext .ts --fix",
     "typeorm": "ts-node ./node_modules/typeorm/cli.js",
     "start": "node -r tsconfig-paths/register build/shared/http/server.js",
-    "build": "tsc"
+    "build": "tsc && copy ormconfig.json build\\"
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",
