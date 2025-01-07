@@ -5,7 +5,7 @@ import 'express-async-errors';
 import cors from 'cors';
 import routes from './routes';
 
-import '@shared/typeorm';
+import '../../shared/typeorm';
 import AppError from '../errors/AppError';
 
 const port = process.env.PORT || 3333;

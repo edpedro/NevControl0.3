@@ -1,4 +1,3 @@
-import User from '../../../Users/typeorm/entities/User';
 import {
   Column,
   CreateDateColumn,
@@ -8,6 +7,8 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+
+import User from '../../../Users/typeorm/entities/User';
 
 @Entity('creditCards')
 class CreditCard {
