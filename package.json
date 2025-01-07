@@ -11,7 +11,7 @@
     "lint-fix": "eslint . --ext .ts --fix",
     "typeorm": "ts-node ./node_modules/typeorm/cli.js",
     "start": "node -r tsconfig-paths/register build/shared/http/server.js",
-    "build": "tsc && copy ormconfig.json build\\"
+    "build": "tsc && npx shx cp ormconfig.json build/"
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",
@@ -29,6 +29,7 @@
     "eslint-config-prettier": "6.15.0",
     "eslint-plugin-prettier": "3.2.0",
     "prettier": "^2.5.0",
+    "shx": "^0.3.4",
     "ts-node": "^10.9.2",
     "ts-node-dev": "^1.1.8",
     "tsconfig-paths": "^4.2.0",
