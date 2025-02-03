@@ -25,16 +25,17 @@ export class TransactionsRepository extends Repository<Transaction> {
     secondDate,
     id,
   }: IRequest): Promise<Transaction[]> {
+    const whereCondition: any = {
+      creditCard: { id },
+    };
+
+    if (newFirstDate && secondDate) {
+      whereCondition.data = Between(newFirstDate, secondDate);
+    }
+
     const invoces = await this.find({
-      where: {
-        data: Between(newFirstDate, secondDate),
-        creditCard: {
-          id,
-        },
-      },
-      order: {
-        data: 'DESC',
-      },
+      where: whereCondition,
+      order: { data: 'DESC' },
     });
 
     return invoces;

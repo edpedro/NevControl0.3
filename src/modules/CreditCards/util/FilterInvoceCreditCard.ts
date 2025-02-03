@@ -1,4 +1,4 @@
-import { format, addDays } from 'date-fns';
+import { format, addDays, subMonths, setDate } from 'date-fns';
 
 interface IParams {
   close: string; // Dia de fechamento do cartão
@@ -7,32 +7,26 @@ interface IParams {
 }
 
 export function FilterInvoceCreditCard({ close, win, month }: IParams) {
-  const today = new Date(); // Data atual
-  const year = today.getFullYear(); // Ano atual
-  const month1 = month ? Number(month) - 1 : today.getMonth(); // Mês de referência (0-11)
-  const closeDay = Number(close);
-  const winDay = Number(win);
+  const today = new Date();
+  const year = today.getFullYear();
+  const month1 = month ? Number.parseInt(month, 10) - 1 : today.getMonth();
+  const closeDay = Number.parseInt(close, 10);
+  const winDay = Number.parseInt(win, 10);
 
-  // Ajustar ano para o mês de referência
-  const referenceDateInstance = new Date(year, month1, 1);
-  const isAfterClosing =
-    today.getDate() > closeDay || today.getMonth() > month1;
+  // Determinar o mês de referência da fatura
+  const referenceDate = new Date(year, month1, 1);
 
-  const closingDate = new Date(
-    referenceDateInstance.getFullYear(),
-    referenceDateInstance.getMonth() - (isAfterClosing ? 0 : 1),
-    closeDay,
-  );
+  let startPeriod, endPeriod;
 
-  // Início do período: dia seguinte ao fechamento anterior
-  const startPeriod = addDays(closingDate, 1);
-
-  // Fim do período: dia do próximo fechamento
-  const endPeriod = new Date(
-    closingDate.getFullYear(),
-    closingDate.getMonth() + 1,
-    closeDay,
-  );
+  if (closeDay < winDay) {
+    // Cartão que fecha e vence no mesmo mês (ex: fecha dia 1, vence dia 9)
+    startPeriod = setDate(referenceDate, closeDay + 1);
+    endPeriod = setDate(addDays(referenceDate, 32), closeDay); // Garante que estamos no próximo mês
+  } else {
+    // Cartão que fecha em um mês e vence no próximo (ex: fecha dia 26, vence dia 1)
+    startPeriod = setDate(subMonths(referenceDate, 1), closeDay + 1);
+    endPeriod = setDate(referenceDate, closeDay);
+  }
 
   // Formatar datas
   const newFirstDate = format(startPeriod, 'yyyy-MM-dd');
